@@ -1,0 +1,54 @@
+body{
+    background-color: gray;
+}
+/*  */
+#wrapper{
+    width: 90%;
+    margin: auto;
+    
+}
+
+/*  */
+a{
+    text-decoration: none;
+}
+#header{
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+    margin: auto;
+}
+#navBar ul{
+    display: flex;
+    text-align: left;
+    padding-right: 5px;
+}
+#navBar ul li{
+    list-style: none;
+    padding: 10px;
+    text-align: center;
+    font-size: large;
+}
+#login ul{
+    display: flex;
+    text-align: right;
+    padding-right: 5px;
+}
+#login ul li {
+    list-style: none;
+    padding: 10px;
+    text-align: center;
+    font-size: large;
+    text-decoration: none;
+}
+/*  text area */
+#addNewTask{
+    width: 40%;
+    text-align: left;
+    margin: auto;
+    padding-top: 2px;
+    display: block;
+    height: 200px;
+}
+
+

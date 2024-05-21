@@ -18,8 +18,18 @@ console.log(title)
 })
 
 ///////
+let titleN=document.getElementsByName('title')
+let beginTime=document.getElementsByName('title')
+let endTime=document.getElementsByName('title')
+let description=document.getElementsByName('title')
+
 addNewTask.addEventListener('submit',(e)=>{
-    e.preventDefault();
-let titleName=addNewTask.title.value;
+e.preventDefault();
+let titleName=titleN.value;
+let timeBegin=beginTime.value
+let timeEnd=endTime.value;
+let desc=description.value;
+console.log(titleName,timeBegin,timeEnd,desc,"clicked");
+myTask.append(titleName)
 })
 

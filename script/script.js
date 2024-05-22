@@ -57,7 +57,6 @@ addNew.addEventListener("click", (e) => {
 // user can set something else
 //it should let user to do some sort of effect
 let settings = document.getElementById("settings");
-
 settings.addEventListener("click", (e) => {
   e.preventDefault();
 
@@ -74,6 +73,14 @@ settings.addEventListener("click", (e) => {
     settingsArea.style.height = "100%";
     settingsArea.style.display = "block";
 
+    ////////////
+    if (!document.getElementById("changeCol")) {
+      const changeCol = document.createElement("h4");
+      changeCol.setAttribute("id", "chgCol");
+      changeCol.innerHTML = "<h4>choice color</h4>";
+      changeCol.classList.add("changeCol");
+      settingsArea.appendChild(changeCol);
+    }
     ///////////
     if (!document.getElementById("colOne")) {
       const colorOne = document.createElement("button");
@@ -114,15 +121,7 @@ settings.addEventListener("click", (e) => {
         // allWrapper.style.backgroundColor = "red";
         allWrapper.classList.add("colThree");
       });
-      // c
-      //   colorOne.addEventListener("click", colorHandler(colorOne.textContent));
     }
   }
 });
 ///////////////color handler
-// function colorHandler(colo) {
-//     colo.preventDefault();
-//     if (colo == "red") {
-//         colo.
-//     }
-// }

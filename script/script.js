@@ -49,6 +49,8 @@ addNew.addEventListener("click", (e) => {
   console.log("add clicked");
   //display the text area and user can input task
   //and the form accept the task and save to the file
+  //   myTask.style.display = "block";
+  //   addNewTask.style.display = "none";
 });
 
 //*****************************settings */

@@ -10,11 +10,12 @@ let file = document.getElementById("file");
 const addNewTask = document.getElementById("addNewTask");
 let myTask = document.getElementById("my_task");
 
-///event
+///file to store the task ,the user added
 file.addEventListener("click", (e) => {
   e.preventDefault();
-  let title = document.createElement("h1");
-  title.innerHTML = "my task list";
+
+  let table = document.createElement("table");
+  let tableHeader=document.createElement("ht");
   console.log("...", title);
   myTask.appendChild(title);
   console.log(title, "...title");
@@ -33,9 +34,18 @@ addNewTask.addEventListener("submit", (e) => {
   let description = document.getElementById("desc").value;
   //;
   console.log(titleN, beginTime, endTime, description, "clicked");
-  myTask.append(titleN);
+
+
+  let title=document.createElement('h1');
+  let begTime=document.createElement('h1');
+  ///
+  title.textContent=titleN;
+  begTime.textContent=begTime;
+  //
+  myTask.appendChild(title);
+  myTask.appendChild(begTime);
   //css for the myTASK
-  myTask.style.display = "flex";
+  myTask.style.display = "block";
   myTask.style.width = "80%";
   myTask.style.textAlign = "center";
 
@@ -43,14 +53,25 @@ addNewTask.addEventListener("submit", (e) => {
   form.reset();
 });
 ///*****************************ADD Tasks */
-let addNew = document.getElementById("addNewTask");
+let addNew = document.getElementById("addNew");
 addNew.addEventListener("click", (e) => {
   e.preventDefault();
-  console.log("add clicked");
   //display the text area and user can input task
   //and the form accept the task and save to the file
   //   myTask.style.display = "block";
-  //   addNewTask.style.display = "none";
+  let isFomrVisible=addNewTask.classList.contains('formForAdd');
+
+  if(isFomrVisible){
+    addNewTask.classList.remove("formForAdd");
+    addNewTask.style.height = "0%";
+    addNewTask.style.display = "none";
+  }else{
+    addNewTask.classList.add("formForAdd");
+    addNewTask.style.height = "100%";
+    addNewTask.style.display = "block";
+
+  }
+   
 });
 
 //*****************************settings */
@@ -76,6 +97,7 @@ settings.addEventListener("click", (e) => {
     settingsArea.style.display = "block";
 
     ////////////
+    ///only once it has to displayed ,it should replace ?
     if (!document.getElementById("changeCol")) {
       const changeCol = document.createElement("h4");
       changeCol.setAttribute("id", "chgCol");
@@ -83,6 +105,7 @@ settings.addEventListener("click", (e) => {
       changeCol.classList.add("changeCol");
       settingsArea.appendChild(changeCol);
     }
+
     ///////////
     if (!document.getElementById("colOne")) {
       const colorOne = document.createElement("button");
@@ -93,8 +116,8 @@ settings.addEventListener("click", (e) => {
       colorOne.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
-        // allWrapper.style.backgroundColor = "green";
-        allWrapper.classList.add("colOne");
+        allWrapper.style.backgroundColor = "red";
+        // allWrapper.classList.add("colOne");
       });
       // colorOne.addEventListener('click',colorHandler(colorOne.textContent))
     }
@@ -107,8 +130,8 @@ settings.addEventListener("click", (e) => {
       colorTwo.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
-        // allWrapper.style.backgroundColor = "red";
-        allWrapper.classList.add("colTwo");
+        allWrapper.style.backgroundColor = "green";
+        // allWrapper.classList.add("colTwo");
       });
     }
     if (!document.getElementById("colThree")) {
@@ -120,8 +143,9 @@ settings.addEventListener("click", (e) => {
       colorThree.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
-        // allWrapper.style.backgroundColor = "red";
-        allWrapper.classList.add("colThree");
+        allWrapper.style.backgroundColor = "yellow";
+
+        // allWrapper.classList.add("colThree");
       });
     }
   }

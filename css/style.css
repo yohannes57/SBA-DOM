@@ -1,54 +1,72 @@
-body{
-    background-color: gray;
+body {
+  background-color: gray;
 }
 /*  */
-#wrapper{
-    width: 90%;
-    margin: auto;
-    
+#wrapper {
+  width: 90%;
+  margin: auto;
 }
 
 /*  */
-a{
-    text-decoration: none;
+a {
+  text-decoration: none;
 }
-#header{
-    display: flex;
-    justify-content: space-evenly;
-    width: 80%;
-    margin: auto;
+#header {
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%;
+  margin: auto;
 }
-#navBar ul{
-    display: flex;
-    text-align: left;
-    padding-right: 5px;
+#navBar ul {
+  display: flex;
+  text-align: left;
+  padding-right: 5px;
 }
-#navBar ul li{
-    list-style: none;
-    padding: 10px;
-    text-align: center;
-    font-size: large;
+#navBar ul li {
+  list-style: none;
+  padding: 10px;
+  text-align: center;
+  font-size: large;
 }
-#login ul{
-    display: flex;
-    text-align: right;
-    padding-right: 5px;
+#login ul {
+  display: flex;
+  text-align: right;
+  padding-right: 5px;
 }
 #login ul li {
-    list-style: none;
-    padding: 10px;
-    text-align: center;
-    font-size: large;
-    text-decoration: none;
+  list-style: none;
+  padding: 10px;
+  text-align: center;
+  font-size: large;
+  text-decoration: none;
 }
 /*  text area */
-#addNewTask{
-    width: 40%;
-    text-align: left;
-    margin: auto;
-    padding-top: 2px;
-    display: block;
-    height: 200px;
+#addNewTask {
+  width: 40%;
+  text-align: left;
+  margin: auto;
+  padding-top: 2px;
+  display: block;
 }
 
-
+/* setting area */
+.setArea {
+  width: 60%;
+  text-align: left;
+  margin: auto;
+}
+.colOne {
+  color: green;
+  padding: 5px;
+  background-color: black;
+}
+.colTwo {
+  color: red;
+  padding: 5px;
+  background-color: white;
+}
+.colThree {
+  color: yellow;
+  padding: 5px;
+  background-color: red;
+}

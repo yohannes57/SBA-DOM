@@ -10,8 +10,11 @@ let file = document.getElementById("file");
 
 const addNewTask = document.getElementById("addNewTask");
 let myTask = document.getElementById("my_task");
+//****************************Header navigation bar */
+let headerNav = ["file", "add-New", "settings", "login", "signUP"];
 
-///file to stored in the task ,the user added
+// ****************************
+///data to be store for a sample to show how tasks will be stored  ,the user added
 let saveData = [
   {
     title: "SBA",
@@ -46,37 +49,8 @@ file.addEventListener("click", (e) => {
   }
   cout += 1;
 });
-///////
 //form eventListener
 addNewTask.addEventListener("submit", addRow);
-// (e) => {
-//   e.preventDefault();
-//   let form = document.getElementById("my_task tbody");
-//   //get value of each input
-//   let titleN = document.getElementById("title").value;
-//   let beginTime = document.getElementById("beginTime").value;
-//   let endTime = document.getElementById("endTime").value;
-//   let description = document.getElementById("desc").value;
-//;
-//   console.log(titleN, beginTime, endTime, description, "clicked");
-
-//   let title = document.createElement("h1");
-//   let begTime = document.createElement("h1");
-//   ///
-//   title.textContent = titleN;
-//   begTime.textContent = begTime;
-//   //
-//   myTask.appendChild(title);
-//   myTask.appendChild(begTime);
-//   //css for the myTASK
-//   myTask.style.display = "block";
-//   myTask.style.width = "80%";
-//   myTask.style.textAlign = "center";
-
-//to clear up the form
-//   form.reset();
-// });
-
 ///*****************************ADD Tasks */
 //To Add new task ,press addNew button
 let addNew = document.getElementById("addNew");

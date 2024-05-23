@@ -31,15 +31,16 @@
         </div>
         <!-- form used to accept a new task -->
         <form id="addNewTask" action="#">
-            <label for="title">title of your task:</label><br>
-            <input type="text" id="title" name="title" placeholder="title of the task">
+            <label for="title">Put your task here:</label><br>
+            <input type="text" id="title" name="title" placeholder="title of the task" required>
             <br>
-            <input name="beginTime" id="beginTime" type="datetime-local"><br>
-            <input id="endTime" name="endTime" type="date"><br>
-            <textarea id="desc" name="desc" type="text" placeholder="discribe your task"></textarea>
+            <input name="beginTime" id="beginTime" type="datetime-local" required><br>
+            <input id="endTime" name="endTime" required type="date"><br>
+            <textarea id="desc" name="desc" type="text" placeholder="discribe your task" required></textarea>
             <button type="submit">add</button>
         </form>
         <!-- display for saved tasks in form of table -->
+        <div id="savedFile">Saved Files</div>
         <table id="my_task">
             <thead>
                 <tr>

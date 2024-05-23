@@ -26,12 +26,9 @@
                 </ul>
             </div>
         </header>
-        
+        <!-- setting area display-->
         <div id="settingArea">
-
         </div>
-
-
         <!-- form used to accept a new task -->
         <form id="addNewTask" action="#">
             <label for="title">title of your task:</label><br>
@@ -42,13 +39,23 @@
             <textarea id="desc" name="desc" type="text" placeholder="discribe your task"></textarea>
             <button type="submit">add</button>
         </form>
+        <!-- display for saved tasks in form of table -->
+        <table id="my_task">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>beginDate</th>
+                    <th>endDate</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- this is the area ,data stored -->
+            </tbody>
 
-        <!-- display for saved tasks  -->
-        <div id="my_task">
-
-        </div>
-
+        </table>
     </div>
+    <!-- js connection ... -->
     <script src="script/script.js"></script>
 </body>
 

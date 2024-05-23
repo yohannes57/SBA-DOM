@@ -1,5 +1,6 @@
-console.log("SBA-DOM For Dom in Js");
+// var fs = require("fs");
 
+console.log("SBA-DOM For Dom in Js");
 let allWrapper = document.getElementById("wrapperAll");
 let header = document.getElementById("header");
 let navBar = document.getElementById("navBar");
@@ -10,69 +11,130 @@ let file = document.getElementById("file");
 const addNewTask = document.getElementById("addNewTask");
 let myTask = document.getElementById("my_task");
 
-///file to store the task ,the user added
+///file to stored in the task ,the user added
+let saveData = [
+  {
+    title: "SBA",
+    beginTime: Date(),
+    endTime: Date() + 1,
+    description: "has to done to friday ",
+  },
+  {
+    title: "KBA",
+    beginTime: Date(),
+    endTime: Date() + 1,
+    description: "have to study for kba  ",
+  },
+  {
+    title: "LAB",
+    beginTime: Date(),
+    endTime: Date() + 1,
+    description: "tha lab has to be submite on time",
+  },
+];
+let cout = 0;
 file.addEventListener("click", (e) => {
   e.preventDefault();
-
-  let table = document.createElement("table");
-  let tableHeader=document.createElement("ht");
-  console.log("...", title);
-  myTask.appendChild(title);
-  console.log(title, "...title");
-  // myTask[0].classList.add('flex-ctr')
+  console.log(saveData.length, " length");
+  const tableBody = document.querySelector("#my_task tbody");
+  if (cout < 1) {
+    for (let i = 0; i < saveData.length; i++) {
+      let saveFile = createTable(saveData[i]);
+      tableBody.appendChild(saveFile);
+      myTask.appendChild(tableBody);
+    }
+  }
+  cout += 1;
 });
-
 ///////
+//form eventListener
+addNewTask.addEventListener("submit", addRow);
+// (e) => {
+//   e.preventDefault();
+//   let form = document.getElementById("my_task tbody");
+//   //get value of each input
+//   let titleN = document.getElementById("title").value;
+//   let beginTime = document.getElementById("beginTime").value;
+//   let endTime = document.getElementById("endTime").value;
+//   let description = document.getElementById("desc").value;
+//;
+//   console.log(titleN, beginTime, endTime, description, "clicked");
 
-addNewTask.addEventListener("submit", (e) => {
-  e.preventDefault();
-  let form = document.getElementById("addNewTask");
-  //get value of each input
-  let titleN = document.getElementById("title").value;
-  let beginTime = document.getElementById("beginTime").value;
-  let endTime = document.getElementById("endTime").value;
-  let description = document.getElementById("desc").value;
-  //;
-  console.log(titleN, beginTime, endTime, description, "clicked");
+//   let title = document.createElement("h1");
+//   let begTime = document.createElement("h1");
+//   ///
+//   title.textContent = titleN;
+//   begTime.textContent = begTime;
+//   //
+//   myTask.appendChild(title);
+//   myTask.appendChild(begTime);
+//   //css for the myTASK
+//   myTask.style.display = "block";
+//   myTask.style.width = "80%";
+//   myTask.style.textAlign = "center";
 
+//to clear up the form
+//   form.reset();
+// });
 
-  let title=document.createElement('h1');
-  let begTime=document.createElement('h1');
-  ///
-  title.textContent=titleN;
-  begTime.textContent=begTime;
-  //
-  myTask.appendChild(title);
-  myTask.appendChild(begTime);
-  //css for the myTASK
-  myTask.style.display = "block";
-  myTask.style.width = "80%";
-  myTask.style.textAlign = "center";
-
-  //to clear up the form
-  form.reset();
-});
 ///*****************************ADD Tasks */
+//To Add new task ,press addNew button
 let addNew = document.getElementById("addNew");
 addNew.addEventListener("click", (e) => {
   e.preventDefault();
-  //display the text area and user can input task
-  //and the form accept the task and save to the file
-  //   myTask.style.display = "block";
-  let isFomrVisible=addNewTask.classList.contains('formForAdd');
-
-  if(isFomrVisible){
+  let isFomrVisible = addNewTask.classList.contains("formForAdd");
+  if (isFomrVisible) {
     addNewTask.classList.remove("formForAdd");
     addNewTask.style.height = "0%";
     addNewTask.style.display = "none";
-  }else{
+  } else {
     addNewTask.classList.add("formForAdd");
     addNewTask.style.height = "100%";
     addNewTask.style.display = "block";
-
+    addRow();
   }
-   
 });
+//***************create table */
+function createTable(data) {
+  let row = document.createElement("tr");
+  Object.values(data).forEach((value) => {
+    const cell = document.createElement("td");
+    cell.textContent = value;
+    row.appendChild(cell);
+  });
+  console.log("row ..", row);
+  return row;
+}
+//add a new row with value
+function addRow(e) {
+  e.preventDefault();
+  let title = document.getElementById("title");
+  let beginTime = document.getElementById("beginTime");
+  let endTime = document.getElementById("endTime");
+  let description = document.getElementById("desc");
+
+  const newRowData = {
+    title: title.value,
+    beginTime: beginTime.value,
+    endTime: endTime.value,
+    description: description.value,
+  };
+  console.log(title.value);
+  console.log(beginTime.value);
+  console.log(endTime.value);
+  console.log(description.value);
+
+  const tableBody = document.querySelector("#my_task tbody");
+  const newRow = createTable(newRowData);
+  console.log(newRow, ".....newRow .");
+  tableBody.append(newRow);
+
+  //reset value
+  title.value = "";
+  beginTime.value = "";
+  endTime.value = "";
+  description.value = "";
+}
 
 //*****************************settings */
 //1,user can change the color of the text,
@@ -98,14 +160,14 @@ settings.addEventListener("click", (e) => {
 
     ////////////
     ///only once it has to displayed ,it should replace ?
+    const changeCol = document.createElement("h4");
     if (!document.getElementById("changeCol")) {
-      const changeCol = document.createElement("h4");
       changeCol.setAttribute("id", "chgCol");
       changeCol.innerHTML = "<h4>choice color</h4>";
       changeCol.classList.add("changeCol");
       settingsArea.appendChild(changeCol);
+      changeCol.innerHTML = "";
     }
-
     ///////////
     if (!document.getElementById("colOne")) {
       const colorOne = document.createElement("button");
@@ -144,6 +206,21 @@ settings.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
         allWrapper.style.backgroundColor = "yellow";
+
+        // allWrapper.classList.add("colThree");
+      });
+    }
+    //reset to orginal color
+    if (!document.getElementById("resetColor")) {
+      const resCol = document.createElement("button");
+      resCol.setAttribute("id", "resetColor");
+      resCol.textContent = "gray";
+      resCol.classList.add("resetColor");
+      settingsArea.appendChild(resCol);
+      resCol.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        allWrapper.style.backgroundColor = "gray";
 
         // allWrapper.classList.add("colThree");
       });

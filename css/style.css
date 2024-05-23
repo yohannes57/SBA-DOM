@@ -1,6 +1,6 @@
-body {
+/* body {
   background-color: gray;
-}
+} */
 /*  */
 #wrapper {
   width: 90%;
@@ -69,4 +69,19 @@ a {
   color: yellow;
   padding: 5px;
   background-color: red;
+}
+.resetColor {
+  color: gray;
+  background-color: green;
+}
+/* table  */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th,
+td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
 }

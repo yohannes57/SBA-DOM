@@ -17,7 +17,18 @@ a {
   width: 80%;
   margin: auto;
 }
+.header {
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%;
+  margin: auto;
+}
 #navBar ul {
+  display: flex;
+  text-align: left;
+  padding-right: 5px;
+}
+.navBar ul {
   display: flex;
   text-align: left;
   padding-right: 5px;

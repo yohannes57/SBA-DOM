@@ -2,7 +2,7 @@
 
 console.log("SBA-DOM For Dom in Js");
 let allWrapper = document.getElementById("wrapperAll");
-let header = document.getElementById("header");
+// let header = document.getElementById("header");
 let navBar = document.getElementById("navBar");
 let login = document.getElementById("login");
 
@@ -11,7 +11,36 @@ let file = document.getElementById("file");
 const addNewTask = document.getElementById("addNewTask");
 let myTask = document.getElementById("my_task");
 //****************************Header navigation bar */
-let headerNav = ["file", "add-New", "settings", "login", "signUP"];
+let headerNav = ["File", "Add-New", "Setting"];
+let loginSignUp = ["SignUp", "Login"];
+//
+let headUl = document.createElement("ul");
+//);
+let header = document.getElementById("header");
+header.style.height = "100%";
+header.style.backgroundColor = "var(--top-menu-bg)";
+header.classList.add("header");
+let TopMenu = document.getElementById("topMenu");
+navBar.classList.add("naveBar");
+//
+function assignLinks(links) {
+  links.forEach((link) => {
+    let aLink = document.createElement("a");
+    console.log("link", link);
+    aLink.textContent = link;
+    aLink.classList.add("ancho");
+    //
+    let headLi = document.createElement("li");
+    headLi.appendChild(aLink);
+
+    headUl.appendChild(headLi);
+    console.log("ul", headUl);
+  });
+  TopMenu.appendChild(headUl);
+}
+console.log(navBar);
+assignLinks(headerNav);
+assignLinks(loginSignUp);
 
 // ****************************
 ///data to be store for a sample to show how tasks will be stored  ,the user added

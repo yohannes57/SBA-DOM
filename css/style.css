@@ -1,13 +1,7 @@
-/* body {
-  background-color: gray;
-} */
-/*  */
 #wrapper {
   width: 90%;
   margin: auto;
 }
-
-/*  */
 a {
   text-decoration: none;
 }
@@ -86,7 +80,57 @@ a {
 #addNewTask button:hover {
   background-color: #45a049;
 }
+/* nav*/
+:root {
+  --top-menu-bg: whitesmoke;
+  --link-color: black;
+  --link-hover-color: green;
+}
 
+/* .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background-color: var(--top-menu-bg);
+} */
+
+/* .navBar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.navBar ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+} */
+
+/* .navBar ul li {
+  margin: 0 10px;
+}
+
+.navBar ul li a {
+  color: var(--link-color);
+  text-decoration: none;
+  padding: 10px;
+}
+
+.navBar ul li a:hover {
+  color: var(--link-hover-color);
+}
+
+.navBar ul:first-child {
+  margin-right: auto;
+}
+
+.navBar ul:last-child {
+  margin-left: auto;
+} */
+
+/* end nav */
 /* setting area */
 .setArea {
   width: 60%;

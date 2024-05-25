@@ -1,49 +1,76 @@
-// var fs = require("fs");
-
 console.log("SBA-DOM For Dom in Js");
 let allWrapper = document.getElementById("wrapperAll");
-// let header = document.getElementById("header");
 let navBar = document.getElementById("navBar");
 let login = document.getElementById("login");
-
-let file = document.getElementById("file");
-
+//
 const addNewTask = document.getElementById("addNewTask");
 let myTask = document.getElementById("my_task");
+
 //****************************Header navigation bar */
-let headerNav = ["File", "Add-New", "Setting"];
-let loginSignUp = ["SignUp", "Login"];
-//
-let headUl = document.createElement("ul");
-//);
+//creat nav links in array object format
+let headerNav = [
+  { text: "File", href: "#" },
+  { text: "Add-New", href: "#" },
+  { text: "Setting", href: "#" },
+];
+let loginSignUp = [
+  { text: "SignUp", href: "#" },
+  { text: "Login", href: "#" },
+];
+//assign left and right to hold navBar and signLogin part
+let headUlLeft = document.createElement("ul");
+let headUlRight = document.createElement("ul");
+
 let header = document.getElementById("header");
 header.style.height = "100%";
 header.style.backgroundColor = "var(--top-menu-bg)";
 header.classList.add("header");
-let TopMenu = document.getElementById("topMenu");
-navBar.classList.add("naveBar");
-//
-function assignLinks(links) {
+
+//This is use to sanitizedId to assign ,id dynamically
+function sanitizeId(text) {
+  return text
+    .toLowerCase() // Convert to lowercase
+    .replace(/\s+/g, "-") // Replace spaces with hyphens
+    .replace(/[^\w\-]/g, "") // Remove all non-alphanumeric characters except hyphens and underscores
+    .replace(/^-+|-+$/g, ""); // Remove leading and trailing hyphens
+}
+//////////// assign links array to nav
+function assignLinks(links, headUl) {
   links.forEach((link) => {
     let aLink = document.createElement("a");
     console.log("link", link);
-    aLink.textContent = link;
-    aLink.classList.add("ancho");
-    //
+    aLink.textContent = link.text;
+    aLink.href = link.href;
+    // aLink.classList.add("nav");
+    aLink.id = sanitizeId(link.text);
+
+    //append anchor to list
     let headLi = document.createElement("li");
     headLi.appendChild(aLink);
 
+    //  append list into ul
     headUl.appendChild(headLi);
     console.log("ul", headUl);
   });
-  TopMenu.appendChild(headUl);
 }
-console.log(navBar);
-assignLinks(headerNav);
-assignLinks(loginSignUp);
+//assign left and right nav bar
+assignLinks(headerNav, headUlLeft);
+assignLinks(loginSignUp, headUlRight);
+navBar.appendChild(headUlLeft);
+login.appendChild(headUlRight);
+//append left and right to header
+header.appendChild(navBar);
+header.appendChild(login);
 
-// ****************************
-///data to be store for a sample to show how tasks will be stored  ,the user added
+// **************************************************************
+///accessing all navBar with getElementById and assign event for each
+let fileLink = document.getElementById("file");
+let addNewLink = document.getElementById("add-new");
+let settingLink = document.getElementById("setting");
+let signUpLink = document.getElementById("signup");
+let loginLink = document.getElementById("login");
+//
+//sample data to be saved in File
 let saveData = [
   {
     title: "SBA",
@@ -64,8 +91,10 @@ let saveData = [
     description: "tha lab has to be submite on time",
   },
 ];
+//
 let cout = 0;
-file.addEventListener("click", (e) => {
+//****************add event listener for File
+fileLink.addEventListener("click", (e) => {
   e.preventDefault();
   console.log(saveData.length, " length");
   const tableBody = document.querySelector("#my_task tbody");
@@ -78,12 +107,13 @@ file.addEventListener("click", (e) => {
   }
   cout += 1;
 });
-//form eventListener
+//
+//*********************attach even for form
 addNewTask.addEventListener("submit", addRow);
+//
 ///*****************************ADD Tasks */
-//To Add new task ,press addNew button
-let addNew = document.getElementById("addNew");
-addNew.addEventListener("click", (e) => {
+//add eventListener for Add-new navBar to add and minimized form
+addNewLink.addEventListener("click", (e) => {
   e.preventDefault();
   let isFomrVisible = addNewTask.classList.contains("formForAdd");
   if (isFomrVisible) {
@@ -96,7 +126,8 @@ addNew.addEventListener("click", (e) => {
     addNewTask.style.display = "block";
   }
 });
-//***************create table */
+//
+//***************create table to hold file*/
 function createTable(data) {
   let row = document.createElement("tr");
   Object.values(data).forEach((value) => {
@@ -109,33 +140,35 @@ function createTable(data) {
 }
 //add a new row with value
 function addRow(e) {
- e.preventDefault();
+  e.preventDefault();
   let title = document.getElementById("title");
   let beginTime = document.getElementById("beginTime");
   let endTime = document.getElementById("endTime");
   let description = document.getElementById("desc");
-  let newRowData={}
-  if(title.value.length>=4){
+  let newRowData = {};
+  if (title.value.length >= 4) {
     newRowData = {
       title: title.value,
       beginTime: beginTime.value,
       endTime: endTime.value,
       description: description.value,
     };
-  }else{
-    window.prompt("your title is too short to make sense")
+  } else {
+    window.prompt("your title is too short to make sense");
   }
-  if(beginTime.value<endTime.value){
-   newRowData = {
+  if (beginTime.value < endTime.value) {
+    newRowData = {
       title: title.value,
       beginTime: beginTime.value,
       endTime: endTime.value,
       description: description.value,
     };
-  }else{
-  window.prompt(`begin date ${beginTime.value} should precede end data ${endTime.value}`)
+  } else {
+    window.prompt(
+      `begin date ${beginTime.value} should precede end data ${endTime.value}`
+    );
   }
-  
+
   console.log(title.value);
   console.log(beginTime.value);
   console.log(endTime.value);
@@ -152,20 +185,17 @@ function addRow(e) {
   endTime.value = "";
   description.value = "";
 }
-
 //*****************************settings */
 //1,user can change the color of the text,
 // user can change the backgroud color
 // user can set something else
 //it should let user to do some sort of effect
-let settings = document.getElementById("settings");
-settings.addEventListener("click", (e) => {
+let savedFile = document.querySelector("#savedFile");
+settingLink.addEventListener("click", (e) => {
   e.preventDefault();
-
   let settingsArea = document.getElementById("settingArea");
   let isSettingVisible = settingsArea.classList.contains("setArea");
-
-  //   console.log(",,,,", isSettingVisible);
+  // console.log(",,,,", isSettingVisible);
   if (isSettingVisible) {
     settingsArea.classList.remove("setArea");
     settingsArea.style.height = "0%";
@@ -174,9 +204,7 @@ settings.addEventListener("click", (e) => {
     settingsArea.classList.add("setArea");
     settingsArea.style.height = "100%";
     settingsArea.style.display = "block";
-
-    ////////////
-    ///only once it has to displayed ,it should replace ?
+    ///////
     const changeCol = document.createElement("h4");
     if (!document.getElementById("changeCol")) {
       changeCol.setAttribute("id", "chgCol");
@@ -196,9 +224,11 @@ settings.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
         allWrapper.style.backgroundColor = "red";
+        header.style.backgroundColor = "red";
+        savedFile.style.backgroundColor = "red";
+        savedFile.style.color = "white";
         // allWrapper.classList.add("colOne");
       });
-      // colorOne.addEventListener('click',colorHandler(colorOne.textContent))
     }
     if (!document.getElementById("colTwo")) {
       const colorTwo = document.createElement("button");
@@ -210,6 +240,9 @@ settings.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
         allWrapper.style.backgroundColor = "green";
+        header.style.backgroundColor = "green";
+        savedFile.style.backgroundColor = "green";
+        savedFile.style.color = "red";
         // allWrapper.classList.add("colTwo");
       });
     }
@@ -223,6 +256,9 @@ settings.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
         allWrapper.style.backgroundColor = "yellow";
+        header.style.backgroundColor = "yellow";
+        savedFile.style.backgroundColor = "yellow";
+        savedFile.style.color = "white";
 
         // allWrapper.classList.add("colThree");
       });
@@ -238,10 +274,12 @@ settings.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
         allWrapper.style.backgroundColor = "gray";
-
+        header.style.backgroundColor = "gray";
+        savedFile.style.backgroundColor = "gray";
+        savedFile.style.color = "black";
         // allWrapper.classList.add("colThree");
       });
     }
   }
 });
-///////////////color handler
+//end of setting

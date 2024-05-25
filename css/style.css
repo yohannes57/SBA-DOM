@@ -8,7 +8,7 @@ a {
 #header {
   display: flex;
   justify-content: space-evenly;
-  width: 80%;
+  width: 100%;
   margin: auto;
 }
 .header {
@@ -86,52 +86,68 @@ a {
   --link-color: black;
   --link-hover-color: green;
 }
-
-/* .header {
+/* logn and signUp */
+/* General styles for the form container */
+#loginSignup {
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-  background-color: var(--top-menu-bg);
-} */
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
 
-/* .navBar {
+/* Styles for the form */
+.sign-up-form {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+}
+
+/* Styles for input fields */
+.sign-up-form input {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
   width: 100%;
 }
 
-.navBar ul {
-  list-style: none;
-  display: flex;
-  margin: 0;
-  padding: 0;
-} */
-
-/* .navBar ul li {
-  margin: 0 10px;
-}
-
-.navBar ul li a {
-  color: var(--link-color);
-  text-decoration: none;
+/* Styles for the submit button */
+.sign-up-form button.submit {
+  background-color: #28a745;
+  color: #fff;
   padding: 10px;
+  border: none;
+  border-radius: 4px;
+  width: 100%;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.sign-up-form input,
+.sign-up-form button {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
-.navBar ul li a:hover {
-  color: var(--link-hover-color);
+.sign-up-form button.submit:hover {
+  background-color: #218838;
 }
 
-.navBar ul:first-child {
-  margin-right: auto;
+/* Placeholder styling */
+.sign-up-form input::placeholder {
+  color: #888;
 }
 
-.navBar ul:last-child {
-  margin-left: auto;
-} */
-
-/* end nav */
-/* setting area */
+/* setting  */
 .setArea {
   width: 60%;
   text-align: left;

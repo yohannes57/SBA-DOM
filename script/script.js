@@ -102,31 +102,49 @@ signUpLink.addEventListener("click", (e) => {
 
   console.log("signUp clicked"); //listened
   let loginSignUp = document.getElementById("loginSignup");
-  let signForm = document.createElement("form");
 
-  let userNameInput = document.createElement("input");
-  userNameInput.setAttribute("type", "text");
-  userNameInput.classList.add("name");
-  signForm.appendChild(userNameInput);
+  // Check if the form already exists
+  let signForm = loginSignUp.querySelector(".sign-up-form");
+  if (signForm) {
+    if (signForm.style.display === "none" || signForm.style.display === "") {
+      signForm.style.display = "block";
+    } else {
+      signForm.style.display = "none";
+    }
+  } else {
+    signForm = document.createElement("form");
+    signForm.classList.add("sign-up-form");
+    signForm.style.height = "100%";
+    signForm.style.display = "block";
 
-  let emailInput = document.createElement("input");
-  emailInput.setAttribute("type", "email");
-  emailInput.classList.add("email");
-  signForm.appendChild(emailInput);
+    let userNameInput = document.createElement("input");
+    userNameInput.setAttribute("type", "text");
+    userNameInput.setAttribute("placeholder", "username");
+    userNameInput.classList.add("name");
+    signForm.appendChild(userNameInput);
 
-  let passwordInput = document.createElement("input");
-  passwordInput.setAttribute("type", "text");
-  passwordInput.classList.add("name");
-  signForm.appendChild(passwordInput);
+    let emailInput = document.createElement("input");
+    emailInput.setAttribute("type", "email");
+    emailInput.setAttribute("placeholder", "Email");
+    emailInput.classList.add("email");
+    signForm.appendChild(emailInput);
 
-  let submitButton = document.createElement("button");
-  submitButton.setAttribute("type", "submit");
-  submitButton.innerHTML = "signUp";
-  submitButton.classList.add("submit");
-  signForm.appendChild(submitButton);
+    let passwordInput = document.createElement("input");
+    passwordInput.setAttribute("type", "text");
+    passwordInput.setAttribute("placeholder", "Password");
+    passwordInput.classList.add("password");
+    signForm.appendChild(passwordInput);
 
-  loginSignUp.appendChild(signForm);
+    let submitButton = document.createElement("button");
+    submitButton.setAttribute("type", "submit");
+    submitButton.innerHTML = "signUp";
+    submitButton.classList.add("submit");
+    signForm.appendChild(submitButton);
+
+    loginSignUp.appendChild(signForm);
+  }
 });
+
 //login
 loginLink.addEventListener("click", (e) => {
   e.preventDefault();
@@ -249,7 +267,6 @@ function saveRow(row, data) {
     editRow(row, data);
   });
 }
-
 //add a new row with value
 function addRow(e) {
   e.preventDefault();

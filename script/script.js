@@ -94,7 +94,6 @@ addNew.addEventListener("click", (e) => {
     addNewTask.classList.add("formForAdd");
     addNewTask.style.height = "100%";
     addNewTask.style.display = "block";
-    addRow();
   }
 });
 //***************create table */
@@ -110,18 +109,33 @@ function createTable(data) {
 }
 //add a new row with value
 function addRow(e) {
-  e.preventDefault();
+ e.preventDefault();
   let title = document.getElementById("title");
   let beginTime = document.getElementById("beginTime");
   let endTime = document.getElementById("endTime");
   let description = document.getElementById("desc");
-
-  const newRowData = {
-    title: title.value,
-    beginTime: beginTime.value,
-    endTime: endTime.value,
-    description: description.value,
-  };
+  let newRowData={}
+  if(title.value.length>=4){
+    newRowData = {
+      title: title.value,
+      beginTime: beginTime.value,
+      endTime: endTime.value,
+      description: description.value,
+    };
+  }else{
+    window.prompt("your title is too short to make sense")
+  }
+  if(beginTime.value<endTime.value){
+   newRowData = {
+      title: title.value,
+      beginTime: beginTime.value,
+      endTime: endTime.value,
+      description: description.value,
+    };
+  }else{
+  window.prompt(`begin date ${beginTime.value} should precede end data ${endTime.value}`)
+  }
+  
   console.log(title.value);
   console.log(beginTime.value);
   console.log(endTime.value);

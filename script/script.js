@@ -67,6 +67,8 @@ header.appendChild(login);
 let fileLink = document.getElementById("file");
 let addNewLink = document.getElementById("add-new");
 let settingLink = document.getElementById("setting");
+
+//right
 let signUpLink = document.getElementById("signup");
 let loginLink = document.getElementById("login");
 //
@@ -91,6 +93,46 @@ let saveData = [
     description: "tha lab has to be submite on time",
   },
 ];
+//
+//signUP and ligin Links
+//signUP
+signUpLink.addEventListener("click", (e) => {
+  e.preventDefault();
+  e.stopPropagation(); //stop bubbling effect
+
+  console.log("signUp clicked"); //listened
+  let loginSignUp = document.getElementById("loginSignup");
+  let signForm = document.createElement("form");
+
+  let userNameInput = document.createElement("input");
+  userNameInput.setAttribute("type", "text");
+  userNameInput.classList.add("name");
+  signForm.appendChild(userNameInput);
+
+  let emailInput = document.createElement("input");
+  emailInput.setAttribute("type", "email");
+  emailInput.classList.add("email");
+  signForm.appendChild(emailInput);
+
+  let passwordInput = document.createElement("input");
+  passwordInput.setAttribute("type", "text");
+  passwordInput.classList.add("name");
+  signForm.appendChild(passwordInput);
+
+  let submitButton = document.createElement("button");
+  submitButton.setAttribute("type", "submit");
+  submitButton.innerHTML = "signUp";
+  submitButton.classList.add("submit");
+  signForm.appendChild(submitButton);
+
+  loginSignUp.appendChild(signForm);
+});
+//login
+loginLink.addEventListener("click", (e) => {
+  e.preventDefault();
+  console.log("login clicked"); //listened
+});
+
 //
 let cout = 0;
 //****************add event listener for File
@@ -127,8 +169,7 @@ addNewLink.addEventListener("click", (e) => {
   }
 });
 //
-//***************create table to hold file*/ -m"
-// }//***************create table to hold file*/
+//***************create table to hold file*/
 function createTable(data) {
   let row = document.createElement("tr");
 

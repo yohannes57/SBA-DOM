@@ -127,16 +127,7 @@ addNewLink.addEventListener("click", (e) => {
   }
 });
 //
-//***************create table to hold file*/
-// function createTable(data) {
-//   let row = document.createElement("tr");
-//   Object.values(data).forEach((value) => {
-//     const cell = document.createElement("td");
-//     cell.textContent = value;
-//     row.appendChild(cell);
-//   });
-//   console.log("row ..", row);
-//   return row;
+//***************create table to hold file*/ -m"
 // }//***************create table to hold file*/
 function createTable(data) {
   let row = document.createElement("tr");

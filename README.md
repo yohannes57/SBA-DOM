@@ -1,6 +1,6 @@
-# Navigation Bar Project
+# To Do List App
 
-This project demonstrates how to create a dynamic navigation bar with links and event listeners using HTML, CSS, and JavaScript.
+This is too mini project ,it only to show how dom and eventListener in js
 
 ## Table of Contents
 
@@ -13,7 +13,8 @@ This project demonstrates how to create a dynamic navigation bar with links and 
 
 ## Introduction
 
-This project is a simple example of how to create a navigation bar where links are dynamically added using JavaScript. Each link is assigned a unique ID, and event listeners are attached to each link to handle click events.
+it create nav bar dynamically,it will store file ,and chnage some basic setting,
+it enable to edit ,remove and add files
 
 ## Features
 
@@ -29,5 +30,5 @@ To get started with this project, follow the instructions below:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/navigation-bar-project.git
+   git clone https://github.com/yohannes57/SBA-DOM
    ```

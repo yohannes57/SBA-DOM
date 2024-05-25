@@ -120,6 +120,7 @@ signUpLink.addEventListener("click", (e) => {
     let userNameInput = document.createElement("input");
     userNameInput.setAttribute("type", "text");
     userNameInput.setAttribute("placeholder", "username");
+    userNameInput.required = true;
     userNameInput.classList.add("name");
     signForm.appendChild(userNameInput);
 
@@ -127,12 +128,14 @@ signUpLink.addEventListener("click", (e) => {
     emailInput.setAttribute("type", "email");
     emailInput.setAttribute("placeholder", "Email");
     emailInput.classList.add("email");
+    emailInput.required = true;
     signForm.appendChild(emailInput);
 
     let passwordInput = document.createElement("input");
     passwordInput.setAttribute("type", "text");
     passwordInput.setAttribute("placeholder", "Password");
     passwordInput.classList.add("password");
+    passwordInput.required = true;
     signForm.appendChild(passwordInput);
 
     let submitButton = document.createElement("button");
@@ -141,7 +144,16 @@ signUpLink.addEventListener("click", (e) => {
     submitButton.classList.add("submit");
     signForm.appendChild(submitButton);
 
+    submitButton.addEventListener("submit", (e) => {
+      e.preventDefault();
+      window.prompt("thank you for sign up,enjoy the application ....:)");
+    });
+
     loginSignUp.appendChild(signForm);
+
+    userNameInput.value = "";
+    emailInput.value = "";
+    passwordInput.value = "";
   }
 });
 

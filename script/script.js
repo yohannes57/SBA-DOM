@@ -128,16 +128,96 @@ addNewLink.addEventListener("click", (e) => {
 });
 //
 //***************create table to hold file*/
+// function createTable(data) {
+//   let row = document.createElement("tr");
+//   Object.values(data).forEach((value) => {
+//     const cell = document.createElement("td");
+//     cell.textContent = value;
+//     row.appendChild(cell);
+//   });
+//   console.log("row ..", row);
+//   return row;
+// }//***************create table to hold file*/
 function createTable(data) {
   let row = document.createElement("tr");
+
+  // Create cells for the data
   Object.values(data).forEach((value) => {
     const cell = document.createElement("td");
     cell.textContent = value;
     row.appendChild(cell);
+    cell.classList.add("eachInput");
+    console.log(cell.getAttribute);
   });
+
+  // Create Edit button
+  const editButton = document.createElement("button");
+  editButton.textContent = "Edit";
+  editButton.addEventListener("click", () => {
+    editRow(row, data);
+  });
+  const editCell = document.createElement("td");
+  editCell.appendChild(editButton);
+  row.appendChild(editCell);
+
+  // Create Remove button
+  const removeButton = document.createElement("button");
+  removeButton.textContent = "Remove";
+  removeButton.addEventListener("click", () => {
+    row.remove();
+  });
+  const removeCell = document.createElement("td");
+  removeCell.appendChild(removeButton);
+  row.appendChild(removeCell);
+
   console.log("row ..", row);
   return row;
 }
+// Function to edit a row
+function editRow(row, data) {
+  Array.from(row.cells).forEach((cell, index) => {
+    if (index < Object.keys(data).length) {
+      const input = document.createElement("input");
+      input.type = "text";
+      input.value = cell.textContent;
+      cell.textContent = "";
+      cell.appendChild(input);
+    }
+  });
+
+  // Change the Edit button to a Save button
+  const editButton = row.querySelector("button");
+  editButton.textContent = "Save";
+  editButton.removeEventListener("click", editRow);
+  editButton.addEventListener("click", () => {
+    saveRow(row, data);
+  });
+}
+
+// Function to save the edited row
+function saveRow(row, data) {
+  const inputs = row.querySelectorAll("input");
+  console.log(inputs, "..class of eachinput");
+  inputs.forEach((input, index) => {
+    const key = Object.keys(data)[index];
+    data[key] = input.value;
+  });
+
+  // Replace input fields with updated text content
+  inputs.forEach((input) => {
+    const cell = input.parentElement;
+    cell.textContent = input.value;
+  });
+
+  // Change the Save button back to an Edit button
+  const saveButton = row.querySelector("button");
+  saveButton.textContent = "Edit";
+  saveButton.removeEventListener("click", saveRow);
+  saveButton.addEventListener("click", () => {
+    editRow(row, data);
+  });
+}
+
 //add a new row with value
 function addRow(e) {
   e.preventDefault();
@@ -146,28 +226,23 @@ function addRow(e) {
   let endTime = document.getElementById("endTime");
   let description = document.getElementById("desc");
   let newRowData = {};
+  //validations
   if (title.value.length >= 4) {
-    newRowData = {
-      title: title.value,
-      beginTime: beginTime.value,
-      endTime: endTime.value,
-      description: description.value,
-    };
+    newRowData.tile = title.value;
   } else {
     window.prompt("your title is too short to make sense");
+    return;
   }
   if (beginTime.value < endTime.value) {
-    newRowData = {
-      title: title.value,
-      beginTime: beginTime.value,
-      endTime: endTime.value,
-      description: description.value,
-    };
+    newRowData.beginTime = beginTime.value;
+    newRowData.endTime = endTime.value;
   } else {
     window.prompt(
       `begin date ${beginTime.value} should precede end data ${endTime.value}`
     );
+    return;
   }
+  newRowData.description = description.value;
 
   console.log(title.value);
   console.log(beginTime.value);
